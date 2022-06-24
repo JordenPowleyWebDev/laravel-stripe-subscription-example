@@ -13,6 +13,7 @@
         "jordenpowleywebdev/laravel-permission-helper": "^1.0",
         "langleyfoxall/laravel-nist-password-rules": "^5.0",
         "langleyfoxall/react-dynamic-data-table-laravel-api": "^4.0",
+        "laravel/cashier": "^13.11",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",

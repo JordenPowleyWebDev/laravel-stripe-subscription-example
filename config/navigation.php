@@ -12,8 +12,8 @@ return [
                 [
                     "label"         => 'Users',
                     "icon"          => null,
-                    "name"          => 'user.index',
-                    "activeName"    => 'user.',
+                    "name"          => 'admin.user.index',
+                    "activeName"    => 'admin.user.',
                     "can"           => [
                         "permission"    => 'viewAny',
                         "model"         => User::class,
@@ -22,8 +22,8 @@ return [
                 [
                     "label"         => 'My Account',
                     "icon"          => null,
-                    "name"          => 'my-account.edit',
-                    "activeName"    => 'my-account.',
+                    "name"          => 'admin.my-account.edit',
+                    "activeName"    => 'admin.my-account.',
                 ]
             ]
         ],
@@ -31,7 +31,7 @@ return [
             "type"      => 'single',
             "label"     => 'Logout',
             "icon"      => 'fas fa-sign-out-alt fa-fw',
-            "name"      => 'logout',
+            "name"      => 'admin.logout',
         ],
     ]
 ];

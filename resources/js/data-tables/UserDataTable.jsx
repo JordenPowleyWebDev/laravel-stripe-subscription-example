@@ -43,7 +43,7 @@ const UserDataTable = () => {
             <td>
                 <div className={"d-flex justify-content-end align-content-center align-items-center"}>
                     {!!item.can && !!item.can.view && (
-                        <a className="text-primary cursor-pointer" href={route('user.show', {user: item.id}).toString()}>
+                        <a className="text-primary cursor-pointer" href={route('admin.user.show', {user: item.id}).toString()}>
                             View
                         </a>
                     )}
@@ -72,7 +72,7 @@ const UserDataTable = () => {
                                     type={"href"}
                                     label={"Create User"}
                                     options={{
-                                        href: route('user.create').toString(),
+                                        href: route('admin.user.create').toString(),
                                         icon: "fas fa-plus-circle"
                                     }}
                                     classes={{container: "btn-secondary"}}
@@ -94,7 +94,7 @@ const UserDataTable = () => {
                         <div className="data-table">
                             <AjaxDynamicDataTable
                                 ref={dataTableRef}
-                                apiUrl={route('web-api.user.data-table').toString()}
+                                apiUrl={route('web-api.admin.user.data-table').toString()}
                                 loadingComponent={<LoadingIndicator />}
                                 noDataComponent={<EmptyTable itemName="users" />}
                                 fieldsToExclude={(deletedFilter === FILTER_OPTIONS.deleted.value) ? [

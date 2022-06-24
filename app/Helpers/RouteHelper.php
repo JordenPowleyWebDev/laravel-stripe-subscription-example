@@ -17,7 +17,7 @@ class RouteHelper
      */
     public static function home(): string
     {
-        return route('user.index');
+        return route('admin.user.index');
     }
 
     /**
@@ -27,6 +27,6 @@ class RouteHelper
      */
     public static function login(): string
     {
-        return route('login');
+        return route('admin.login');
     }
 }
