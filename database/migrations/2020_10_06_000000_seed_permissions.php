@@ -13,6 +13,20 @@ class SeedPermissions extends Migration
         "update-user",
         "delete-user",
         "restore-user",
+
+        "view-any-subscription",
+        "view-subscription",
+        "store-subscription",
+        "update-subscription",
+        "delete-subscription",
+        "restore-subscription",
+
+        "view-any-stripe-subscription-plan-detail",
+        "view-stripe-subscription-plan-detail",
+        "store-stripe-subscription-plan-detail",
+        "update-stripe-subscription-plan-detail",
+        "delete-stripe-subscription-plan-detail",
+        "restore-stripe-subscription-plan-detail",
     ];
 
     /**

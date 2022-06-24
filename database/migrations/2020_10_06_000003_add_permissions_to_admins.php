@@ -54,6 +54,13 @@ class AddPermissionsToAdmins extends Migration
             "view-user",
             "store-user",
             "update-user",
+
+            "view-any-subscription",
+            "view-subscription",
+            "store-subscription",
+            "update-subscription",
+            "delete-subscription",
+            "restore-subscription",
         ];
     }
 

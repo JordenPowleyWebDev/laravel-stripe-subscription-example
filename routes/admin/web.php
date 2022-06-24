@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\ResetPasswordController;
 use App\Http\Controllers\Admin\MyAccountController;
+use App\Http\Controllers\Admin\StripeSubscriptionPlanDetailController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +39,9 @@ Route::domain("admin.{$domain}")->group(function (): void {
     Route::middleware(['logged_in'])->group(function () {
         Route::resource('user', UserController::class);
         Route::patch('user/{user}/restore', [UserController::class, "restore"])->name('user.restore');
+
+        Route::resource('stripeSubscriptionPlanDetail', StripeSubscriptionPlanDetailController::class);
+        Route::patch('stripeSubscriptionPlanDetail/{stripeSubscriptionPlanDetail}/restore', [StripeSubscriptionPlanDetailController::class, "restore"])->name('stripeSubscriptionPlanDetail.restore');
 
         Route::get('my-account', [MyAccountController::class, 'edit'])->name('my-account.edit');
         Route::patch('my-account', [MyAccountController::class, 'update'])->name('my-account.update');

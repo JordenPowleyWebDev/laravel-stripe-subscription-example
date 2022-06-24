@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\WebApi\Admin\StripeSubscriptionPlanDetailController;
 use App\Http\Controllers\WebApi\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,5 +20,6 @@ use Illuminate\Support\Facades\Route;
 Route::domain("admin.{$domain}")->group(function (): void {
     Route::middleware(['logged_in'])->group(function () {
         Route::get('user/datatable', [UserController::class, "dataTable"])->name('user.data-table');
+        Route::get('stripeSubscriptionPlanDetail/datatable', [StripeSubscriptionPlanDetailController::class, "dataTable"])->name('stripeSubscriptionPlanDetail.data-table');
     });
 });

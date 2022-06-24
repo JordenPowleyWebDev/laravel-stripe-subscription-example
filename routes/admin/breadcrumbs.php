@@ -2,6 +2,29 @@
 
 use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
 
+// Admin -> Stripe Subscription Plan Detail -> Index
+Breadcrumbs::for('admin.stripeSubscriptionPlanDetail.index', function ($trail) {
+    $trail->push('Stripe Subscription Plan Details', route('admin.stripeSubscriptionPlanDetail.index'));
+});
+
+// Admin -> Stripe Subscription Plan Detail -> Create
+Breadcrumbs::for('admin.stripeSubscriptionPlanDetail.create', function ($trail) {
+    $trail->parent('admin.stripeSubscriptionPlanDetail.index');
+    $trail->push('Create Stripe Subscription Plan Detail', route('admin.stripeSubscriptionPlanDetail.create'));
+});
+
+// Admin -> Stripe Subscription Plan Detail -> Show
+Breadcrumbs::for( 'admin.stripeSubscriptionPlanDetail.show', function ($trail, $stripeSubscriptionPlanDetail) {
+    $trail->parent('admin.stripeSubscriptionPlanDetail.index');
+    $trail->push($stripeSubscriptionPlanDetail->name, route('admin.stripeSubscriptionPlanDetail.show', $stripeSubscriptionPlanDetail));
+});
+
+// Admin -> Stripe Subscription Plan Detail -> Show -> Edit
+Breadcrumbs::for('admin.stripeSubscriptionPlanDetail.edit', function ($trail, $stripeSubscriptionPlanDetail) {
+    $trail->parent('admin.stripeSubscriptionPlanDetail.show', $stripeSubscriptionPlanDetail);
+    $trail->push('Edit', route('admin.stripeSubscriptionPlanDetail.edit', $stripeSubscriptionPlanDetail));
+});
+
 // Admin -> User -> Index
 Breadcrumbs::for('admin.user.index', function ($trail) {
     $trail->push('Users', route('admin.user.index'));

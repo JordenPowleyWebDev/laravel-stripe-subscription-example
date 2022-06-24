@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\StripeSubscriptionPlanDetail;
 use App\Models\User;
 
 return [
@@ -9,6 +10,16 @@ return [
             "label"     => 'Management',
             "icon"      => 'fas fa-cog fa-fw',
             "items"     => [
+                [
+                    "label"         => 'Stripe Subscription Plan Details',
+                    "icon"          => null,
+                    "name"          => 'admin.stripeSubscriptionPlanDetail.index',
+                    "activeName"    => 'admin.stripeSubscriptionPlanDetail.',
+                    "can"           => [
+                        "permission"    => 'viewAny',
+                        "model"         => StripeSubscriptionPlanDetail::class,
+                    ],
+                ],
                 [
                     "label"         => 'Users',
                     "icon"          => null,
