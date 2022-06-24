@@ -30,7 +30,7 @@
             @endcanany
         </x-laravel-components-card-header>
         <x-laravel-components-card-data
-            :data="[['label' => 'Name', 'value' => $user->name], ['label' => 'Email', 'value' => $user->email], ['label' => 'Role', 'value' => $user->role_name], ['label' => 'Created', 'value' => App\Enums\DateFormats::format($user->created_at, App\Enums\DateFormats::DATE_HM)]]"
+            :data="[['label' => 'Name', 'value' => $user->name], ['label' => 'Email', 'value' => $user->email], ['label' => 'Role', 'value' => $user->role_name_label], ['label' => 'Created', 'value' => App\Enums\DateFormats::format($user->created_at, App\Enums\DateFormats::DATE_HM)]]"
         />
     </x-laravel-components-card>
 @endsection
