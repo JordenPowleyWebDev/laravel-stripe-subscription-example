@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\WidgetController;
+use App\Http\Controllers\Widget\WidgetController;
 use Illuminate\Support\Facades\Route;
 
 /*
