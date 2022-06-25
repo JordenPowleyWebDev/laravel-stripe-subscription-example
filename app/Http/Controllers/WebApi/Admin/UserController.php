@@ -13,7 +13,6 @@ use App\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use LangleyFoxall\ReactDynamicDataTableLaravelApi\DataTableResponder;
@@ -26,6 +25,14 @@ use function filled;
  */
 class UserController extends Controller
 {
+    /**
+     * UserController::__construct().
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(User::class, 'user');
+    }
+
     /**
      * UserController::dataTable()
      *
@@ -135,10 +142,11 @@ class UserController extends Controller
         $role = Role::findOrFail($data['role']);
         $user->syncRoles([$role]);
 
-        $request->session()->flash('success', 'User created.');
+        $message = 'User: '.$user->name.' Created.';
+        $request->session()->flash('success', $message);
 
         return response()->json([
-            "message"   => "User created.",
+            "message"   => $message,
             "user_id"   => $user->id,
         ], 201);
     }
@@ -167,10 +175,11 @@ class UserController extends Controller
         $role = Role::findOrFail($data['role']);
         $user->syncRoles([$role]);
 
-        $request->session()->flash('success', 'User updated.');
+        $message = 'User: '.$user->name.' Updated.';
+        $request->session()->flash('success', $message);
 
         return response()->json([
-            "message"   => "User updated.",
+            "message"   => $message,
             "user_id"   => $user->id,
         ], 200);
     }

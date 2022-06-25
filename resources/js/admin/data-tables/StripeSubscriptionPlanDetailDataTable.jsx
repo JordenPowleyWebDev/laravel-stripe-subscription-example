@@ -100,17 +100,23 @@ const StripeSubscriptionPlanDetailDataTable = () => {
                                 fieldsToExclude={(deletedFilter === FILTER_OPTIONS.deleted.value) ? [
                                     'id',
                                     'can',
+                                    'stripe_product_id',
+                                    'price',
+                                    'description',
                                 ] : [
                                     'id',
                                     'can',
+                                    'stripe_product_id',
+                                    'price',
+                                    'description',
                                     'deleted_at',
                                 ]}
                                 alwaysShowPagination
                                 fieldMap={{
                                     created_at: "Created",
                                 }}
-                                // defaultOrderByField={'first_name'}
-                                // defaultOrderByDirection={'asc'}
+                                defaultOrderByField={'name'}
+                                defaultOrderByDirection={'asc'}
                                 params={{
                                     searchTerm:     serverSearch,
                                     filterDeleted:  deletedFilter,

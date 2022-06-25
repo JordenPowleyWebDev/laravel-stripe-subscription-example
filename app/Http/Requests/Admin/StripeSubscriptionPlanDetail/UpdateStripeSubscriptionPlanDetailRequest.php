@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\Admin\StripeSubscriptionPlanDetail;
 
+use App\Subscription\SubscriptionTiers;
+use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 
@@ -31,7 +33,40 @@ class UpdateStripeSubscriptionPlanDetailRequest extends FormRequest
     public function rules(Request $request): array
     {
         return [
-            // TODO - Populate
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+            'stripe_product_id' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+            'price' => [
+                'required',
+                'numeric',
+                'min:0',
+            ],
+            'display_price' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+            'description' => [
+                'required',
+                'string',
+            ],
+            'tier' => [
+                'required',
+                'string',
+                new EnumValue(SubscriptionTiers::class),
+            ],
+            'trial_length_days' => [
+                'required',
+                'numeric',
+                'min:0'
+            ],
         ];
     }
 }

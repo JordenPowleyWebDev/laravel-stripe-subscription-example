@@ -5,9 +5,10 @@ namespace App\Models;
 use App\Subscription\SubscriptionTiers;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use JordenPowleyWebDev\LaravelPermissionHelper\Traits\PermissionTrait;
 
 /**
- * Class StripeSubscriptionDetail
+ * Class StripeSubscriptionPlanDetail
  * @package App\Models
  * @property int $id
  * @property string $name
@@ -15,14 +16,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int $price
  * @property string $display_price
  * @property string $description
- * @property string $tier
+ * @property SubscriptionTiers $tier
  * @property int $trial_length_days
  * @property string $created_at
  * @property string $updated_at
  */
 class StripeSubscriptionPlanDetail extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, PermissionTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -45,7 +46,7 @@ class StripeSubscriptionPlanDetail extends Model
      * @var array
      */
     protected $casts = [
-        'access'        => SubscriptionTiers::class,
+        'tier'          => SubscriptionTiers::class,
         'created_at'    => 'datetime',
         'updated_at'    => 'datetime',
         'deleted_at'    => 'datetime',

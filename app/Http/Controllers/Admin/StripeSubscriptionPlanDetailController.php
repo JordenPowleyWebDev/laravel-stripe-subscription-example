@@ -34,7 +34,7 @@ class StripeSubscriptionPlanDetailController extends Controller
      */
     public function index()
     {
-        return view('pages.admin.stripeSubscriptionPlanDetail.index');
+        return view('pages.admin.stripe-subscription-plan-detail.index');
     }
 
     /**
@@ -45,7 +45,7 @@ class StripeSubscriptionPlanDetailController extends Controller
      */
     public function show(StripeSubscriptionPlanDetail $stripeSubscriptionPlanDetail)
     {
-        return view('pages.admin.stripeSubscriptionPlanDetail.show', [
+        return view('pages.admin.stripe-subscription-plan-detail.show', [
             "stripeSubscriptionPlanDetail" => $stripeSubscriptionPlanDetail,
         ]);
     }
@@ -57,25 +57,7 @@ class StripeSubscriptionPlanDetailController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.stripeSubscriptionPlanDetail.create');
-    }
-
-    /**
-     * StripeSubscriptionPlanDetailController::store()
-     *
-     * @param StoreStripeSubscriptionPlanDetailRequest $request
-     * @return RedirectResponse
-     */
-    public function store(StoreStripeSubscriptionPlanDetailRequest $request): RedirectResponse
-    {
-        $data = $request->validated();
-
-        $stripeSubscriptionPlanDetail = new StripeSubscriptionPlanDetail();
-        $stripeSubscriptionPlanDetail->fill($data);
-        $stripeSubscriptionPlanDetail->save();
-
-        return redirect()->route('admin.stripeSubscriptionPlanDetail.show', ["stripeSubscriptionPlanDetail" => $stripeSubscriptionPlanDetail->id])
-            ->with('success', 'Stripe Subscription Plan Detail: '.$stripeSubscriptionPlanDetail->name.' Created.');
+        return view('pages.admin.stripe-subscription-plan-detail.create');
     }
 
     /**
@@ -86,27 +68,9 @@ class StripeSubscriptionPlanDetailController extends Controller
      */
     public function edit(StripeSubscriptionPlanDetail $stripeSubscriptionPlanDetail)
     {
-        return view('pages.admin.stripeSubscriptionPlanDetail.edit', [
+        return view('pages.admin.stripe-subscription-plan-detail.edit', [
             "stripeSubscriptionPlanDetail"  => $stripeSubscriptionPlanDetail
         ]);
-    }
-
-    /**
-     * StripeSubscriptionPlanDetailController::update()
-     *
-     * @param UpdateStripeSubscriptionPlanDetailRequest $request
-     * @param StripeSubscriptionPlanDetail $stripeSubscriptionPlanDetail
-     * @return RedirectResponse
-     */
-    public function update(UpdateStripeSubscriptionPlanDetailRequest $request, StripeSubscriptionPlanDetail $stripeSubscriptionPlanDetail): RedirectResponse
-    {
-        $data = $request->validated();
-
-        $stripeSubscriptionPlanDetail->fill($data);
-        $stripeSubscriptionPlanDetail->save();
-
-        return redirect()->route('admin.stripeSubscriptionPlanDetail.show', ["stripeSubscriptionPlanDetail" => $stripeSubscriptionPlanDetail->id])
-            ->with('success', 'Stripe Subscription Plan Detail: '.$stripeSubscriptionPlanDetail->name.' Updated.');
     }
 
     /**
@@ -120,7 +84,7 @@ class StripeSubscriptionPlanDetailController extends Controller
     {
         $this->authorize('delete', $stripeSubscriptionPlanDetail);
 
-        return view('pages.admin.stripeSubscriptionPlanDetail.delete', [
+        return view('pages.admin.stripe-subscription-plan-detail.delete', [
             "stripeSubscriptionPlanDetail"  => $stripeSubscriptionPlanDetail
         ]);
     }

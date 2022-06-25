@@ -40,7 +40,7 @@ Route::domain("admin.{$domain}")->group(function (): void {
         Route::resource('user', UserController::class)->except(['store', 'update']);
         Route::patch('user/{user}/restore', [UserController::class, "restore"])->name('user.restore');
 
-        Route::resource('stripeSubscriptionPlanDetail', StripeSubscriptionPlanDetailController::class);
+        Route::resource('stripeSubscriptionPlanDetail', StripeSubscriptionPlanDetailController::class)->except(['store', 'update']);
         Route::patch('stripeSubscriptionPlanDetail/{stripeSubscriptionPlanDetail}/restore', [StripeSubscriptionPlanDetailController::class, "restore"])->name('stripeSubscriptionPlanDetail.restore');
 
         Route::get('my-account', [MyAccountController::class, 'edit'])->name('my-account.edit');

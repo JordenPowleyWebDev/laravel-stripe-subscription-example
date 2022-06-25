@@ -4,13 +4,12 @@ namespace App\Subscription;
 
 use BenSampo\Enum\Enum;
 use Illuminate\Support\Str;
-use JordenPowleyWebDev\LaravelPermissionHelper\Enums\UserRolesInterface;
 
 /**
  * Class SubscriptionTiers
  * @package App\Enums
  */
-final class SubscriptionTiers extends Enum implements UserRolesInterface
+final class SubscriptionTiers extends Enum
 {
     const FREE      = "free";
     const REGULAR   = "regular";

@@ -1489,16 +1489,16 @@
         },
         {
             "name": "jordenpowleywebdev/laravel-components",
-            "version": "v1.0.5",
+            "version": "v1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JordenPowleyWebDev/laravel-components.git",
-                "reference": "904cc7b569ab88a4e674ec61482d8e6cb14f8c72"
+                "reference": "3bbf085aa9a3c55a2bc20031a956155b4bb867eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JordenPowleyWebDev/laravel-components/zipball/904cc7b569ab88a4e674ec61482d8e6cb14f8c72",
-                "reference": "904cc7b569ab88a4e674ec61482d8e6cb14f8c72",
+                "url": "https://api.github.com/repos/JordenPowleyWebDev/laravel-components/zipball/3bbf085aa9a3c55a2bc20031a956155b4bb867eb",
+                "reference": "3bbf085aa9a3c55a2bc20031a956155b4bb867eb",
                 "shasum": ""
             },
             "require": {
@@ -1537,9 +1537,9 @@
             "description": "In Development - A Laravel Components Package",
             "support": {
                 "issues": "https://github.com/JordenPowleyWebDev/laravel-components/issues",
-                "source": "https://github.com/JordenPowleyWebDev/laravel-components/tree/v1.0.5"
+                "source": "https://github.com/JordenPowleyWebDev/laravel-components/tree/v1.0.6"
             },
-            "time": "2022-06-24T22:21:20+00:00"
+            "time": "2022-06-25T12:24:43+00:00"
         },
         {
             "name": "jordenpowleywebdev/laravel-permission-helper",

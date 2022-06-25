@@ -12,15 +12,15 @@ return [
     'views-namespace'   => 'laravel-permission-helper',
     'roles-enum'        => UserRoles::class,
     'model-bindings'    => [
-        'user'              => [
+        'user' => [
             'model'             => User::class,
             'policy'            => UserPolicy::class,
         ],
-        'subscription'  => [
+        'subscription' => [
             'model'             => Subscription::class,
             'policy'            => SubscriptionPolicy::class,
         ],
-        'stripeSubscriptionPlanDetail'  => [
+        'stripeSubscriptionPlanDetail' => [
             'model'             => StripeSubscriptionPlanDetail::class,
             'policy'            => StripeSubscriptionPlanDetailPolicy::class,
         ]
