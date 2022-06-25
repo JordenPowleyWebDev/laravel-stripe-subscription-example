@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::domain("admin.{$domain}")->group(function (): void {
     Route::middleware(['logged_in'])->group(function () {
+        Route::resource('user', UserController::class)->only(['store', 'update']);
+        Route::get('user/data', [UserController::class, "data"])->name('user.data');
         Route::get('user/datatable', [UserController::class, "dataTable"])->name('user.data-table');
         Route::get('stripeSubscriptionPlanDetail/datatable', [StripeSubscriptionPlanDetailController::class, "dataTable"])->name('stripeSubscriptionPlanDetail.data-table');
     });

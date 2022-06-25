@@ -86,31 +86,6 @@ class UserController extends Controller
     }
 
     /**
-     * UserController::store()
-     *
-     * @param StoreUserRequest $request
-     * @return RedirectResponse
-     */
-    public function store(StoreUserRequest $request): RedirectResponse
-    {
-        $data = $request->validated();
-
-        $user = new User();
-        $user->fill($data);
-        if (array_key_exists('password', $data) && filled($data['password'])) {
-            $user->password = bcrypt('password');
-        }
-
-        $user->save();
-
-        $role = Role::findOrFail($data['role']);
-        $user->syncRoles([$role]);
-
-        return redirect()->route('admin.user.show', ["user" => $user->id])
-            ->with('success', 'User: '.$user->name.' Created.');
-    }
-
-    /**
      * UserController::edit()
      *
      * @param User $user
@@ -118,45 +93,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $roles = Role::orderBy("name", "ASC")->get()->transform(function ($role) {
-            return [
-                "value" => strval($role->id),
-                "label" => UserRoles::toLabel($role->name),
-            ];
-        });
-
         return view('pages.admin.user.edit', [
-            "roles" => $roles,
             "user"  => $user
         ]);
-    }
-
-    /**
-     * UserController::update()
-     *
-     * @param UpdateUserRequest $request
-     * @param User $user
-     * @return RedirectResponse
-     */
-    public function update(UpdateUserRequest $request, User $user): RedirectResponse
-    {
-        $data = $request->validated();
-
-        $user->first_name   = $data['first_name'];
-        $user->last_name    = $data['last_name'];
-        $user->email        = $data['email'];
-
-        if (array_key_exists('password', $data) && filled($data['password'])) {
-            $user->password = bcrypt('password');
-        }
-
-        $user->save();
-
-        $role = Role::findOrFail($data['role']);
-        $user->syncRoles([$role]);
-
-        return redirect()->route('admin.user.show', ["user" => $user->id])
-            ->with('success', 'User: '.$user->name.' Updated.');
     }
 
     /**

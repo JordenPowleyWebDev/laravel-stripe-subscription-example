@@ -37,7 +37,7 @@ Route::domain("admin.{$domain}")->group(function (): void {
     Route::any('/logout', [LoginController::class, "logout"])->name('logout');
 
     Route::middleware(['logged_in'])->group(function () {
-        Route::resource('user', UserController::class);
+        Route::resource('user', UserController::class)->except(['store', 'update']);
         Route::patch('user/{user}/restore', [UserController::class, "restore"])->name('user.restore');
 
         Route::resource('stripeSubscriptionPlanDetail', StripeSubscriptionPlanDetailController::class);

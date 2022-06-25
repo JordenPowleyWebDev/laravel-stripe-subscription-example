@@ -1543,16 +1543,16 @@
         },
         {
             "name": "jordenpowleywebdev/laravel-permission-helper",
-            "version": "v1.0.3",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JordenPowleyWebDev/laravel-permission-helper.git",
-                "reference": "6ae5522481fa0afbb31e2b941952c4dc38f45570"
+                "reference": "3797f1cb79b9bbf486a890622e062f7fe018add6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JordenPowleyWebDev/laravel-permission-helper/zipball/6ae5522481fa0afbb31e2b941952c4dc38f45570",
-                "reference": "6ae5522481fa0afbb31e2b941952c4dc38f45570",
+                "url": "https://api.github.com/repos/JordenPowleyWebDev/laravel-permission-helper/zipball/3797f1cb79b9bbf486a890622e062f7fe018add6",
+                "reference": "3797f1cb79b9bbf486a890622e062f7fe018add6",
                 "shasum": ""
             },
             "require": {
@@ -1589,9 +1589,9 @@
             "description": "In Development - A Laravel Permission Helper Package",
             "support": {
                 "issues": "https://github.com/JordenPowleyWebDev/laravel-permission-helper/issues",
-                "source": "https://github.com/JordenPowleyWebDev/laravel-permission-helper/tree/v1.0.3"
+                "source": "https://github.com/JordenPowleyWebDev/laravel-permission-helper/tree/v1.0.4"
             },
-            "time": "2022-05-15T14:08:33+00:00"
+            "time": "2022-06-25T11:15:51+00:00"
         },
         {
             "name": "laminas/laminas-code",

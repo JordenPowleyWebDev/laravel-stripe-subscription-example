@@ -31,6 +31,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @property-read string $full_name
  * @property-read string $name
  *
+ * @property-read int $role_id
  * @property-read string $role_name
  * @property-read string $role_name_label
  * @property-read array $permissions_array

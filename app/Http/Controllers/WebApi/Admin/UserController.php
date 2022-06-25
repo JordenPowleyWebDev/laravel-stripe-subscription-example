@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers\WebApi\Admin;
 
+use App\Enums\UserRoles;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\User\StoreUserRequest;
+use App\Http\Requests\Admin\User\UpdateUserRequest;
+use App\Http\Resources\Admin\Data\UserResource as UserDataResource;
 use App\Http\Resources\Admin\DataTable\UserResource;
+use App\Http\Resources\Admin\Select\RoleResource;
 use App\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use LangleyFoxall\ReactDynamicDataTableLaravelApi\DataTableResponder;
+use Spatie\Permission\Models\Role;
 use function filled;
 
 /**
@@ -74,5 +81,97 @@ class UserController extends Controller
                 });
             })
             ->respond();
+    }
+
+    /**
+     * UserController::data()
+     *
+     * @param Request $request
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function data(Request $request): JsonResponse
+    {
+        $this->authorize('viewAny', User::class);
+
+        $response = [];
+
+        $response['roles'] = Role::orderBy("name", "ASC")->get()->transform(function ($role) {
+            return new RoleResource($role);
+        });
+
+        $response['default_role'] = Role::where('name', '=', UserRoles::ADMIN)->first()->id;
+
+        if ($request->has('user_id') && filled($request->input('user_id'))) {
+            /** @var User $user */
+            $user = USer::findOrFail($request->input('user_id'));
+
+            $this->authorize('view', $user);
+
+            $response['user'] = new UserDataResource($user);
+        }
+
+        return response()->json($response);
+    }
+
+    /**
+     * UserController::store()
+     *
+     * @param StoreUserRequest $request
+     * @return JsonResponse
+     */
+    public function store(StoreUserRequest $request): JsonResponse
+    {
+        $data = $request->validated();
+
+        $user = new User();
+        $user->fill($data);
+        if (array_key_exists('password', $data) && filled($data['password'])) {
+            $user->password = bcrypt('password');
+        }
+
+        $user->save();
+
+        $role = Role::findOrFail($data['role']);
+        $user->syncRoles([$role]);
+
+        $request->session()->flash('success', 'User created.');
+
+        return response()->json([
+            "message"   => "User created.",
+            "user_id"   => $user->id,
+        ], 201);
+    }
+
+    /**
+     * UserController::update()
+     *
+     * @param UpdateUserRequest $request
+     * @param User $user
+     * @return JsonResponse
+     */
+    public function update(UpdateUserRequest $request, User $user): JsonResponse
+    {
+        $data = $request->validated();
+
+        $user->first_name   = $data['first_name'];
+        $user->last_name    = $data['last_name'];
+        $user->email        = $data['email'];
+
+        if (array_key_exists('password', $data) && filled($data['password'])) {
+            $user->password = bcrypt('password');
+        }
+
+        $user->save();
+
+        $role = Role::findOrFail($data['role']);
+        $user->syncRoles([$role]);
+
+        $request->session()->flash('success', 'User updated.');
+
+        return response()->json([
+            "message"   => "User updated.",
+            "user_id"   => $user->id,
+        ], 200);
     }
 }
