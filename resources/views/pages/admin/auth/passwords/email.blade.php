@@ -14,11 +14,11 @@
                 :attributes="['attributes' => ['placeholder' => 'Email Address', 'autocomplete' => 'email', 'autofocus' => true]]"
             />
             <div class="form-group row mb-0">
-                <div class="col-md-8 offset-md-4">
+                <div class="col-12 d-flex flex-column justify-content-center align-items-center">
                     <x-laravel-components-button
                         type="submit"
                         label="Reset"
-                        :classes="['container' => 'btn-success text-white']"
+                        :classes="['container' => 'mb-2 btn-success text-white']"
                     />
                     <a class="btn btn-link" href="{{ route('admin.login') }}">
                         Login
