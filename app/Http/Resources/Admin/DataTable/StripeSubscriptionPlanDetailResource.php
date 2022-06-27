@@ -32,8 +32,8 @@ class StripeSubscriptionPlanDetailResource extends JsonResource
             'description'       => $this->description,
             'tier'              => SubscriptionTiers::toLabel($this->tier->value),
             'trial_length_days' => $this->trial_length_days,
-            'created_at'        => DateFormats::format($this->created_at, DateFormats::DB),
-            'deleted_at'        => $this->when(($this->deleted_at !== null), DateFormats::format($this->deleted_at, DateFormats::DB)),
+            'created_at'        => DateFormats::format($this->created_at, DateFormats::DATE),
+            'deleted_at'        => $this->when(($this->deleted_at !== null), DateFormats::format($this->deleted_at, DateFormats::DATE)),
             'can'               => $this->permissions_array,
         ];
     }
