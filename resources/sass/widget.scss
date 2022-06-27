@@ -12,3 +12,22 @@
 @import '../../vendor/jordenpowleywebdev/laravel-components/dist/scss/app.css';
 
 @import 'bootstrap';
+
+$borderRadius: 4px;
+
+#widget {
+    height: 100vh;
+    background: $dark;
+
+    & > .col-12 {
+        height: 100%;
+
+        #widget-content-container {
+            display: block;
+            border: 1px solid $white;
+            border-radius: $borderRadius;
+            overflow-y: auto;
+            background: $white
+        }
+    }
+}

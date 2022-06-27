@@ -23724,3 +23724,18 @@ textarea.form-control-lg {
 .cursor-pointer {
   cursor: pointer;
 }
+
+#widget {
+  height: 100vh;
+  background: #212529;
+}
+#widget > .col-12 {
+  height: 100%;
+}
+#widget > .col-12 #widget-content-container {
+  display: block;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  overflow-y: auto;
+  background: #fff;
+}
