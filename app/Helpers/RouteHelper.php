@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-use App\Models\User;
+use Illuminate\Support\Facades\Route;
 
 /**
  * Class RouteHelper
@@ -11,13 +11,27 @@ use App\Models\User;
 class RouteHelper
 {
     /**
+     * RouteHelper::isAdminDomain()
+     *
+     * @return bool
+     */
+    public static function isAdminDomain(): bool
+    {
+        return str_starts_with(Route::current()->getDomain(), 'admin.');
+    }
+
+    /**
      * RouteHelper::home()
      *
      * @return string
      */
     public static function home(): string
     {
-        return route('admin.stripeSubscriptionPlanDetail.index');
+        if (self::isAdminDomain()) {
+            return route('admin.stripeSubscriptionPlanDetail.index');
+        }
+
+        return route('widget.subscription.index');
     }
 
     /**
@@ -27,6 +41,9 @@ class RouteHelper
      */
     public static function login(): string
     {
-        return route('admin.login');
+        if (self::isAdminDomain()) {
+            return route('admin.login');
+        }
+        return route('widget.login');
     }
 }

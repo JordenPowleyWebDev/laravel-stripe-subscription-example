@@ -17,3 +17,9 @@ mix.js('resources/js/app.js', 'public/js')
     .sourceMaps()
     .version();
 // .copyDirectory('resources/images', 'public/images')
+
+mix.js('resources/js/widget.js', 'public/js')
+    .react()
+    .sass('resources/sass/widget.scss', 'public/css')
+    .sourceMaps()
+    .version();

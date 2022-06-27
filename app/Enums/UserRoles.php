@@ -3,6 +3,7 @@
 namespace App\Enums;
 
 use BenSampo\Enum\Enum;
+use Illuminate\Support\Str;
 use JordenPowleyWebDev\LaravelPermissionHelper\Enums\UserRolesInterface;
 
 /**
@@ -11,6 +12,7 @@ use JordenPowleyWebDev\LaravelPermissionHelper\Enums\UserRolesInterface;
  */
 final class UserRoles extends Enum implements UserRolesInterface
 {
+    const CUSTOMER      = "customer";
     const USER          = "user";
     const ADMIN         = "admin";
     const SUPER_ADMIN   = "super_admin";
@@ -26,6 +28,7 @@ final class UserRoles extends Enum implements UserRolesInterface
             'SUPER_ADMIN'   => self::SUPER_ADMIN,
             'ADMIN'         => self::ADMIN,
             'USER'          => self::USER,
+            'CUSTOMER'      => self::CUSTOMER,
         ];
     }
 
@@ -40,12 +43,8 @@ final class UserRoles extends Enum implements UserRolesInterface
         switch ($value) {
             case self::SUPER_ADMIN:
                 return "Super Admin";
-            case self::ADMIN:
-                return "Admin";
-            case self::USER:
-                return "User";
             default:
-                return $value;
+                return Str::title($value);
         }
     }
 
