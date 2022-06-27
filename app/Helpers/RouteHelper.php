@@ -17,7 +17,7 @@ class RouteHelper
      */
     public static function home(): string
     {
-        return route('admin.user.index');
+        return route('admin.stripeSubscriptionPlanDetail.index');
     }
 
     /**
